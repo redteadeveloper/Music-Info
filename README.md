@@ -12,5 +12,9 @@ musicInfo.searchSong({ title: "November Rain", artist: "Guns N Roses", album: "U
 ``artist`` and ``album`` parameters are optional.
 
 ### Album search
+```js
+let musicInfo = require("music-info")
 
-In development
+musicInfo.searchAlbum({ name: "Appetite For Destruction", artist: "Guns N Roses" }).then(console.log)
+```
+``artist`` parameter is optional.
