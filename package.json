@@ -1,0 +1,27 @@
+{
+  "name": "music-info",
+  "version": "1.0.0",
+  "description": "Npm module for getting music info.",
+  "main": "./lib/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/redteadeveloper/Music-Info.git"
+  },
+  "keywords": [
+    "music",
+    "song"
+  ],
+  "author": "redteadeveloper <myadiuio@gmail.com>",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/redteadeveloper/Music-Info/issues",
+    "email": "myadiuio@gmail.com"
+  },
+  "homepage": "https://github.com/redteadeveloper/Music-Info#readme",
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  }
+}
