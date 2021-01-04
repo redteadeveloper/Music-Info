@@ -9,6 +9,8 @@ class musicInfo {
 
 exports.searchSong = async ({title: title, artist: artist, album: album }) => {
 
+    if(!title) throw new TypeError("missing parameter: title")
+
     artist = typeof artist !== 'undefined' ? `+${artist}` : "";
     album = typeof album !== 'undefined' ? `+${album}` : "";
 
