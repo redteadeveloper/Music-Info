@@ -1,5 +1,5 @@
 # Music-Info
-npm module for getting music info.
+npm module for searching music and album.
 
 ## Usage
 
