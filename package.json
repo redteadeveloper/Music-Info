@@ -1,6 +1,6 @@
 {
   "name": "music-info",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Npm module for getting music info.",
   "main": "index.js",
   "scripts": {
