@@ -1,4 +1,4 @@
-# Music-Info
+# music-info
 
 [![NPM](https://nodei.co/npm/music-info.png)](https://npmjs.org/package/music-info)
 
