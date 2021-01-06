@@ -62,3 +62,25 @@ exports.searchAlbum = async ({ name: name, artist: artist }) => {
     return result
 
 }
+
+exports.searchLyrics = async ({ title: title, artist: artist }) => {
+
+    if(!title) throw new TypeError("missing parameter: title")
+
+    artist = typeof artist !== 'undefined' ? `-${artist}` : "";
+
+    let lyricsData = await fetch(encodeURI(`https://some-random-api.ml/lyrics/?title=${title}${artist}`))
+    let res = await lyricsData.json()
+
+    if (res.error) {
+        throw new Error("No result.")
+    }
+
+    let result = {
+        url: res.links,
+        lyrics: res.lyrics
+    }
+
+    return result
+
+}
