@@ -2,8 +2,6 @@
 
 [![NPM](https://nodei.co/npm/music-info.png)](https://npmjs.org/package/music-info)
 
-![NPM](https://img.shields.io/npm/dt/music-info.svg)
-
 npm module for searching songs and albums.
 
 ## Usage
