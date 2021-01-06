@@ -10,7 +10,7 @@ npm module for searching songs and albums.
 ```js
 let musicInfo = require("music-info");
 
-musicInfo.searchSong({ title: "November Rain", artist: "Guns N Roses", album: "Use Your Illusion I" }).then(console.log);
+musicInfo.searchSong({ title: "November Rain", artist: "Guns N Roses", album: "Use Your Illusion I" }, 1000).then(console.log);
 ```
 ``artist`` and ``album`` parameters are optional.
 
@@ -18,7 +18,7 @@ musicInfo.searchSong({ title: "November Rain", artist: "Guns N Roses", album: "U
 ```js
 let musicInfo = require("music-info");
 
-musicInfo.searchAlbum({ name: "Appetite For Destruction", artist: "Guns N Roses" }).then(console.log);
+musicInfo.searchAlbum({ name: "Appetite For Destruction", artist: "Guns N Roses" }, 1000).then(console.log);
 ```
 ``artist`` parameter is optional.
 

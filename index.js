@@ -13,15 +13,18 @@ class musicInfo {
  * @param {string} SearchQuery.title - Title of the song
  * @param {string} [SearchQuery.artist] - Artist of the song
  * @param {string} [SearchQuery.album] - Album of the song
+ * @param {number} [size=600] - Size of artwork image (default value is 600)
  * @returns {Promise<object>}
- * @example searchSong({ title: "November Rain", artist: "Guns N Roses", album: "Use Your Illusion I" });
+ * @example searchSong({ title: "November Rain", artist: "Guns N Roses", album: "Use Your Illusion I" }, 1000);
  */
-exports.searchSong = async ({ title: title, artist: artist, album: album }) => {
+
+exports.searchSong = async ({ title: title, artist: artist, album: album }, size) => {
 
     if(!title) throw new TypeError("missing parameter: title")
 
     artist = typeof artist !== 'undefined' ? `+${artist}` : "";
     album = typeof album !== 'undefined' ? `+${album}` : "";
+    size = typeof size !== 'undefined' ? size : 600;
 
     let searchData = await fetch(encodeURI(`https://itunes.apple.com/search?term=${title}${artist}${album}&limit=1&entity=song`))
     let res = await searchData.json()
@@ -38,7 +41,8 @@ exports.searchSong = async ({ title: title, artist: artist, album: album }) => {
         explicit: res.results[0].trackExplicitness == "notExplicit" ? false : true,
         releaseDate: res.results[0].releaseDate,
         genre: res.results[0].primaryGenreName,
-        country: res.results[0].country
+        country: res.results[0].country,
+        artwork: res.results[0].artworkUrl100.replace(/100x100/, `${size}x${size}`)
     }
 
     return result
@@ -50,10 +54,12 @@ exports.searchSong = async ({ title: title, artist: artist, album: album }) => {
  * @param {object} SearchQuery
  * @param {string} SearchQuery.name - Name of the album
  * @param {string} [SearchQuery.artist] - Artist of the album
+ * @param {number} [size=600] - Size of artwork image (default value is 600)
  * @returns {Promise<object>}
- * @example searchAlbum({ name: "Appetite For Destruction", artist: "Guns N Roses" });
+ * @example searchAlbum({ name: "Appetite For Destruction", artist: "Guns N Roses" }, 1000);
  */
-exports.searchAlbum = async ({ name: name, artist: artist }) => {
+
+exports.searchAlbum = async ({ name: name, artist: artist }, size) => {
 
     if(!name) throw new TypeError("missing parameter: name")
 
@@ -73,7 +79,8 @@ exports.searchAlbum = async ({ name: name, artist: artist }) => {
         contentAdvisoryRating: res.results[0].contentAdvisoryRating ? res.results[0].contentAdvisoryRating : null,
         releaseDate: res.results[0].releaseDate,
         genre: res.results[0].primaryGenreName,
-        country: res.results[0].country
+        country: res.results[0].country,
+        artwork: res.results[0].artworkUrl100.replace(/100x100/, `${size}x${size}`)
     }
 
     return result
@@ -88,6 +95,7 @@ exports.searchAlbum = async ({ name: name, artist: artist }) => {
  * @returns {Promise<object>}
  * @example searchLyrics({ title: "Since I Don't Have You", artist: "Guns N Roses" });
  */
+
 exports.searchLyrics = async ({ title: title, artist: artist }) => {
 
     if(!title) throw new TypeError("missing parameter: title")
