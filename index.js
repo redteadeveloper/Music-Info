@@ -7,6 +7,15 @@ class musicInfo {
     }
 }
 
+/**
+ * Gets song information.
+ * @param {object} SearchQuery
+ * @param {string} SearchQuery.title - Title of the song
+ * @param {string} [SearchQuery.artist] - Artist of the song
+ * @param {string} [SearchQuery.album] - Album of the song
+ * @returns {Promise<object>}
+ * @example searchSong({ title: "November Rain", artist: "Guns N Roses", album: "Use Your Illusion I" });
+ */
 exports.searchSong = async ({ title: title, artist: artist, album: album }) => {
 
     if(!title) throw new TypeError("missing parameter: title")
@@ -36,6 +45,14 @@ exports.searchSong = async ({ title: title, artist: artist, album: album }) => {
 
 }
 
+/**
+ * Gets album information.
+ * @param {object} SearchQuery
+ * @param {string} SearchQuery.name - Name of the album
+ * @param {string} [SearchQuery.artist] - Artist of the album
+ * @returns {Promise<object>}
+ * @example searchAlbum({ name: "Appetite For Destruction", artist: "Guns N Roses" });
+ */
 exports.searchAlbum = async ({ name: name, artist: artist }) => {
 
     if(!name) throw new TypeError("missing parameter: name")
@@ -63,6 +80,14 @@ exports.searchAlbum = async ({ name: name, artist: artist }) => {
 
 }
 
+/**
+ * Gets the lyrics of a song.
+ * @param {object} SearchQuery
+ * @param {string} SearchQuery.title - Title of the song
+ * @param {string} [SearchQuery.artist] - Artist of the song
+ * @returns {Promise<object>}
+ * @example searchLyrics({ title: "Since I Don't Have You", artist: "Guns N Roses" });
+ */
 exports.searchLyrics = async ({ title: title, artist: artist }) => {
 
     if(!title) throw new TypeError("missing parameter: title")
