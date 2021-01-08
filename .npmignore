@@ -1,5 +1,8 @@
 !index.js
 *.js
 
+README.md
+.gitattributes
+
 .github/
 node_modules/
