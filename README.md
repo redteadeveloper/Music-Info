@@ -16,7 +16,7 @@ let musicInfo = require("music-info");
 
 musicInfo.searchSong({ title: "November Rain", artist: "Guns N Roses", album: "Use Your Illusion I" }, 1000).then(console.log);
 ```
-* ``1000`` is the size of the artwork.
+* ``1000`` is the size of the artwork. Default value is 600.
 * ``artist`` and ``album`` parameters are optional.
 
 ### Album search
@@ -25,7 +25,7 @@ let musicInfo = require("music-info");
 
 musicInfo.searchAlbum({ name: "Appetite For Destruction", artist: "Guns N Roses" }, 1000).then(console.log);
 ```
-* ``1000`` is the size of the artwork.
+* ``1000`` is the size of the artwork. Default value is 600.
 * ``artist`` parameter is optional.
 
 ### Lyrics search
