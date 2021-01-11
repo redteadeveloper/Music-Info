@@ -20,7 +20,9 @@ class musicInfo {
 
 exports.searchSong = async ({ title: title, artist: artist, album: album }, size) => {
 
-    if(!title) throw new TypeError("missing parameter: title");
+    if(!title) {
+        throw new TypeError("missing parameter: title");
+    }
 
     artist = typeof artist !== "undefined" ? `+${artist}` : "";
     album = typeof album !== "undefined" ? `+${album}` : "";
@@ -38,7 +40,7 @@ exports.searchSong = async ({ title: title, artist: artist, album: album }, size
         album: res.results[0].collectionName,
         discNumber: res.results[0].discNumber,
         trackNumber: res.results[0].trackNumber,
-        explicit: res.results[0].trackExplicitness == "notExplicit" ? false : true,
+        explicit: res.results[0].trackExplicitness === "notExplicit" ? false : true,
         releaseDate: res.results[0].releaseDate,
         genre: res.results[0].primaryGenreName,
         lengthMilliSec: res.results[0].trackTimeMillis,
@@ -61,7 +63,9 @@ exports.searchSong = async ({ title: title, artist: artist, album: album }, size
 
 exports.searchAlbum = async ({ name: name, artist: artist }, size) => {
 
-    if(!name) throw new TypeError("missing parameter: name");
+    if(!name) {
+        throw new TypeError("missing parameter: name");
+    }
 
     artist = typeof artist !== "undefined" ? `+${artist}` : "";
 
@@ -75,7 +79,7 @@ exports.searchAlbum = async ({ name: name, artist: artist }, size) => {
         name: res.results[0].collectionName,
         artist: res.results[0].artistName,
         trackCount: res.results[0].trackCount,
-        explicit: res.results[0].collectionExplicitness == "notExplicit" ? false : true,
+        explicit: res.results[0].collectionExplicitness === "notExplicit" ? false : true,
         contentAdvisoryRating: res.results[0].contentAdvisoryRating ? res.results[0].contentAdvisoryRating : null,
         releaseDate: res.results[0].releaseDate,
         genre: res.results[0].primaryGenreName,
