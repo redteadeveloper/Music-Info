@@ -30,7 +30,7 @@ exports.searchSong = async ({ title: title, artist: artist, album: album }, size
     let res = await searchData.json();
     if (res.resultCount == 0) {
         throw new Error("No result.");
-    };
+    }
 
     let result = {
         title: res.results[0].trackName,
@@ -69,7 +69,7 @@ exports.searchAlbum = async ({ name: name, artist: artist }, size) => {
     let res = await searchData.json();
     if (res.resultCount == 0) {
         throw new Error("No result.");
-    };
+    }
 
     let result = {
         name: res.results[0].collectionName,
@@ -107,7 +107,7 @@ exports.searchLyrics = async ({ title: title, artist: artist }) => {
 
     if (res.error) {
         throw new Error("No result.");
-    };
+    }
 
     let result = {
         url: Object.values(res.links)[0],
