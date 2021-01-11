@@ -1,7 +1,6 @@
 !index.js
 *.js
 
-README.md
 .gitattributes
 
 .github/

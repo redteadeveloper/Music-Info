@@ -9,7 +9,7 @@ class musicInfo {
 
 /**
  * Gets song information.
- * @param {object} SearchQuery
+ * @param {object} SearchQuery - Search query
  * @param {string} SearchQuery.title - Title of the song
  * @param {string} [SearchQuery.artist] - Artist of the song
  * @param {string} [SearchQuery.album] - Album of the song
@@ -41,7 +41,7 @@ exports.searchSong = async ({ title: title, artist: artist, album: album }, size
         explicit: res.results[0].trackExplicitness == "notExplicit" ? false : true,
         releaseDate: res.results[0].releaseDate,
         genre: res.results[0].primaryGenreName,
-        country: res.results[0].country,
+        lengthMilliSec: res.results[0].trackTimeMillis,
         artwork: res.results[0].artworkUrl100.replace(/100x100/, `${size}x${size}`)
     }
 
@@ -51,7 +51,7 @@ exports.searchSong = async ({ title: title, artist: artist, album: album }, size
 
 /**
  * Gets album information.
- * @param {object} SearchQuery
+ * @param {object} SearchQuery - Search query
  * @param {string} SearchQuery.name - Name of the album
  * @param {string} [SearchQuery.artist] - Artist of the album
  * @param {number} [size=600] - Size of artwork image (default value is 600)
@@ -79,7 +79,7 @@ exports.searchAlbum = async ({ name: name, artist: artist }, size) => {
         contentAdvisoryRating: res.results[0].contentAdvisoryRating ? res.results[0].contentAdvisoryRating : null,
         releaseDate: res.results[0].releaseDate,
         genre: res.results[0].primaryGenreName,
-        country: res.results[0].country,
+        copyright: res.results[0].copyright,
         artwork: res.results[0].artworkUrl100.replace(/100x100/, `${size}x${size}`)
     }
 
@@ -89,7 +89,7 @@ exports.searchAlbum = async ({ name: name, artist: artist }, size) => {
 
 /**
  * Gets the lyrics of a song.
- * @param {object} SearchQuery
+ * @param {object} SearchQuery - Search query
  * @param {string} SearchQuery.title - Title of the song
  * @param {string} [SearchQuery.artist] - Artist of the song
  * @returns {Promise<object>}
@@ -110,7 +110,7 @@ exports.searchLyrics = async ({ title: title, artist: artist }) => {
     }
 
     let result = {
-        url: res.links,
+        url: Object.values(res.links)[0],
         lyrics: res.lyrics
     }
 
