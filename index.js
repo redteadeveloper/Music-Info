@@ -5,7 +5,7 @@ class musicInfo {
         this.name = name;
         this.code = code;
     }
-};
+}
 
 /**
  * Gets song information.
