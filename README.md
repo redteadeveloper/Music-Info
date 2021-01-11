@@ -1,9 +1,9 @@
 # music-info
 
 ![NPM](https://img.shields.io/npm/l/music-info?style=flat-square)
-![NPM](https://img.shields.io/npm/v/music-info?style=flat-square)
 ![NPM](https://img.shields.io/codacy/grade/0101b6a8532240be96430ccc83c573e5?style=flat-square)
 ![NPM](https://img.shields.io/npm/dt/music-info?style=flat-square) 
+![NPM](https://img.shields.io/npm/v/music-info?style=flat-square)
 ![NPM](https://img.shields.io/bundlephobia/min/music-info?style=flat-square)
 
 npm module for searching songs and albums.
