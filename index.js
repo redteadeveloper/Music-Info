@@ -28,7 +28,7 @@ exports.searchSong = async ({ title: title, artist: artist, album: album }, size
 
     let searchData = await fetch(encodeURI(`https://itunes.apple.com/search?term=${title}${artist}${album}&limit=1&entity=song`));
     let res = await searchData.json();
-    if (res.resultCount == 0) {
+    if (res.resultCount === 0) {
         throw new Error("No result.");
     }
 
@@ -67,7 +67,7 @@ exports.searchAlbum = async ({ name: name, artist: artist }, size) => {
 
     let searchData = await fetch(encodeURI(`https://itunes.apple.com/search?term=${name}${artist}&limit=1&entity=album`));
     let res = await searchData.json();
-    if (res.resultCount == 0) {
+    if (res.resultCount === 0) {
         throw new Error("No result.");
     }
 
