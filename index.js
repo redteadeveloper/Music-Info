@@ -1,11 +1,11 @@
-const fetch = require('node-fetch')
+const fetch = require("node-fetch");
 
 class musicInfo {
     constructor(name, code) {
         this.name = name;
         this.code = code;
-    }
-}
+    };
+};
 
 /**
  * Gets song information.
@@ -20,17 +20,17 @@ class musicInfo {
 
 exports.searchSong = async ({ title: title, artist: artist, album: album }, size) => {
 
-    if(!title) throw new TypeError("missing parameter: title")
+    if(!title) throw new TypeError("missing parameter: title");
 
-    artist = typeof artist !== 'undefined' ? `+${artist}` : "";
-    album = typeof album !== 'undefined' ? `+${album}` : "";
-    size = typeof size !== 'undefined' ? size : 600;
+    artist = typeof artist !== "undefined" ? `+${artist}` : "";
+    album = typeof album !== "undefined" ? `+${album}` : "";
+    size = typeof size !== "undefined" ? size : 600;
 
-    let searchData = await fetch(encodeURI(`https://itunes.apple.com/search?term=${title}${artist}${album}&limit=1&entity=song`))
-    let res = await searchData.json()
+    let searchData = await fetch(encodeURI(`https://itunes.apple.com/search?term=${title}${artist}${album}&limit=1&entity=song`));
+    let res = await searchData.json();
     if (res.resultCount == 0) {
-        throw new Error("No result.")
-    }
+        throw new Error("No result.");
+    };
 
     let result = {
         title: res.results[0].trackName,
@@ -43,11 +43,11 @@ exports.searchSong = async ({ title: title, artist: artist, album: album }, size
         genre: res.results[0].primaryGenreName,
         lengthMilliSec: res.results[0].trackTimeMillis,
         artwork: res.results[0].artworkUrl100.replace(/100x100/, `${size}x${size}`)
-    }
+    };
 
-    return result
+    return result;
 
-}
+};
 
 /**
  * Gets album information.
@@ -61,15 +61,15 @@ exports.searchSong = async ({ title: title, artist: artist, album: album }, size
 
 exports.searchAlbum = async ({ name: name, artist: artist }, size) => {
 
-    if(!name) throw new TypeError("missing parameter: name")
+    if(!name) throw new TypeError("missing parameter: name");
 
-    artist = typeof artist !== 'undefined' ? `+${artist}` : "";
+    artist = typeof artist !== "undefined" ? `+${artist}` : "";
 
-    let searchData = await fetch(encodeURI(`https://itunes.apple.com/search?term=${name}${artist}&limit=1&entity=album`))
-    let res = await searchData.json()
+    let searchData = await fetch(encodeURI(`https://itunes.apple.com/search?term=${name}${artist}&limit=1&entity=album`));
+    let res = await searchData.json();
     if (res.resultCount == 0) {
-        throw new Error("No result.")
-    }
+        throw new Error("No result.");
+    };
 
     let result = {
         name: res.results[0].collectionName,
@@ -81,11 +81,11 @@ exports.searchAlbum = async ({ name: name, artist: artist }, size) => {
         genre: res.results[0].primaryGenreName,
         copyright: res.results[0].copyright,
         artwork: res.results[0].artworkUrl100.replace(/100x100/, `${size}x${size}`)
-    }
+    };
 
-    return result
+    return result;
 
-}
+};
 
 /**
  * Gets the lyrics of a song.
@@ -98,22 +98,22 @@ exports.searchAlbum = async ({ name: name, artist: artist }, size) => {
 
 exports.searchLyrics = async ({ title: title, artist: artist }) => {
 
-    if(!title) throw new TypeError("missing parameter: title")
+    if(!title) throw new TypeError("missing parameter: title");
 
-    artist = typeof artist !== 'undefined' ? `-${artist}` : "";
+    artist = typeof artist !== "undefined" ? `-${artist}` : "";
 
-    let lyricsData = await fetch(encodeURI(`https://some-random-api.ml/lyrics/?title=${title}${artist}`))
-    let res = await lyricsData.json()
+    let lyricsData = await fetch(encodeURI(`https://some-random-api.ml/lyrics/?title=${title}${artist}`));
+    let res = await lyricsData.json();
 
     if (res.error) {
-        throw new Error("No result.")
-    }
+        throw new Error("No result.");
+    };
 
     let result = {
         url: Object.values(res.links)[0],
         lyrics: res.lyrics
-    }
+    };
 
-    return result
+    return result;
 
-}
+};
