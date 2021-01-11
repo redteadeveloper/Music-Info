@@ -102,7 +102,9 @@ exports.searchAlbum = async ({ name: name, artist: artist }, size) => {
 
 exports.searchLyrics = async ({ title: title, artist: artist }) => {
 
-    if(!title) throw new TypeError("missing parameter: title");
+    if(!title) {
+        throw new TypeError("missing parameter: title");
+    }
 
     artist = typeof artist !== "undefined" ? `-${artist}` : "";
 
