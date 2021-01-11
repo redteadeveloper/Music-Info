@@ -19,6 +19,27 @@ musicInfo.searchSong({ title: "November Rain", artist: "Guns N Roses", album: "U
 * ``1000`` is the size of the artwork. Default value is 600.
 * ``artist`` and ``album`` parameters are optional.
 
+<details><summary>Click to see the returned object (promise)</summary>
+<p>
+  
+```js
+{
+  title: String,      
+  artist: String,
+  album: String,
+  discNumber: Number,
+  trackNumber: Number,
+  explicit: Boolean,
+  releaseDate: String,
+  genre: String,
+  lengthMilliSec: Number,
+  artwork: String
+}
+```
+
+</p>
+</details>
+
 ### Album search
 ```js
 let musicInfo = require("music-info");
@@ -28,6 +49,26 @@ musicInfo.searchAlbum({ name: "Appetite For Destruction", artist: "Guns N Roses"
 * ``1000`` is the size of the artwork. Default value is 600.
 * ``artist`` parameter is optional.
 
+<details><summary>Click to see the returned object (promise)</summary>
+<p>
+  
+```js
+{
+  name: String,
+  artist: String,
+  trackCount: Number,
+  explicit: Boolean,
+  contentAdvisoryRating: String,
+  releaseDate: String,
+  genre: String,
+  copyright: String,
+  artwork: String
+}
+```
+
+</p>
+</details>
+
 ### Lyrics search
 ```js
 let musicInfo = require("music-info");
@@ -35,3 +76,16 @@ let musicInfo = require("music-info");
 musicInfo.searchLyrics({ title: "Since I Don't Have You", artist: "Guns N Roses" }).then(console.log);
 ```
 * ``artist`` parameter is optional.
+
+<details><summary>Click to see the returned object (promise)</summary>
+<p>
+  
+```js
+{
+  url: String,
+  lyrics: String
+}
+```
+
+</p>
+</details>
