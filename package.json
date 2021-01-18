@@ -1,6 +1,6 @@
 {
   "name": "music-info",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "npm module for searching songs and albums.",
   "main": "index.js",
   "scripts": {

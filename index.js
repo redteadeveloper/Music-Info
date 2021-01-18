@@ -76,7 +76,6 @@ exports.searchAlbum = async ({ name: name, artist: artist }, size) => {
         contentAdvisoryRating: res.results[0].contentAdvisoryRating ? res.results[0].contentAdvisoryRating : null,
         releaseDate: res.results[0].releaseDate,
         genre: res.results[0].primaryGenreName,
-        copyright: res.results[0].copyright,
         artwork: res.results[0].artworkUrl100.replace(/100x100/, `${size}x${size}`)
     };
 

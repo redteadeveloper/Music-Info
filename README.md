@@ -61,7 +61,6 @@ musicInfo.searchAlbum({ name: "Appetite For Destruction", artist: "Guns N Roses"
   contentAdvisoryRating: String,
   releaseDate: String,
   genre: String,
-  copyright: String,
   artwork: String
 }
 ```
