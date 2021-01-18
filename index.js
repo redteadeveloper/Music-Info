@@ -1,12 +1,5 @@
 const fetch = require("node-fetch");
 
-class musicInfo {
-    constructor(name, code) {
-        this.name = name;
-        this.code = code;
-    }
-}
-
 /**
  * Gets song information.
  * @param {object} SearchQuery - Search query
