@@ -2,9 +2,11 @@
   "name": "music-info",
   "version": "1.2.1",
   "description": "npm module for searching songs and albums.",
-  "main": "index.js",
+  "main": "app.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc app.ts"
   },
   "repository": {
     "type": "git",
@@ -23,5 +25,8 @@
   "homepage": "https://github.com/redteadeveloper/Music-Info#readme",
   "dependencies": {
     "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.3"
   }
 }
