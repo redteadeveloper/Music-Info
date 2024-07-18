@@ -49,7 +49,13 @@ export async function search(term, { type = 'all', artworkSize = 600, length = 3
 
 }
 
-export async function getLyrics({ title, artist }) {
+export function searchSync(term, { type = 'all', artworkSize = 600, length = 3 } = {}) {
+  let val;
+  search(term, { type, artworkSize, length }).then(result => val = result);
+  return val;
+}
+
+export async function getLyrics(title, { artist }) {
 
   if(!title) throw new TypeError("missing parameter: title");
 

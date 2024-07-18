@@ -10,11 +10,33 @@ npm module for searching songs and albums.
 
 ## Usage
 
-### Song search
-```js
-let musicInfo = require("music-info");
+### Parameters
 
-musicInfo.searchSong({ title: "November Rain", artist: "Guns N Roses", album: "Use Your Illusion I" }, 1000).then(console.log);
+- **`term<String>`**: The term you want to search up for.
+- **`option<Object>`**: Object for additional options when searching up.
+  - `type<String>`: `all` | `song` | `album`
+    - The type of media you want to search up for. Default is `all`.
+  - `artworkSize<Number>`: Size of the artwork. Default is `600`.
+  - `length<Number>`: The number of results you want to get. Default is `3`.
+
+### Overall search
+
+Don't pass any configuration in order to search for anything that matches the search keyword.
+Or you can set the `type` to `all` in order to achieve the same result.
+
+```js
+const musicInfo = require('music-info');
+
+musicInfo.search("I'm not the only one").then(console.log);
+```
+
+### Song search
+
+```js
+const musicInfo = require('music-info');
+
+musicInfo.search('November Rain', { type: 'song', artworkSize: 1000 }).then(console.log);
+
 ```
 * ``1000`` is the size of the artwork. Default value is 600.
 * ``artist`` and ``album`` parameters are optional.
@@ -24,16 +46,22 @@ musicInfo.searchSong({ title: "November Rain", artist: "Guns N Roses", album: "U
   
 ```js
 {
-  title: String,      
-  artist: String,
-  album: String,
-  discNumber: Number,
-  trackNumber: Number,
+  type: 'song',
+  title: String, // title of the song
+  artist: String, // artist of the song
+  available: Boolean, // on iTunes
   explicit: Boolean,
-  releaseDate: String,
-  genre: String,
-  lengthMilliSec: Number,
-  artwork: String
+  length: String, // ex. 3:30 for 3 minutes 30 seconds long
+  album: { // info of the album
+    type: 'album',
+    title: String, // title of the album
+    artist: String, // artist of the album
+    trackCount: Number,
+    genre: String,
+    releaseDate: Date,
+    explicit: Boolean,
+    artwork: String
+  }
 }
 ```
 
@@ -42,9 +70,9 @@ musicInfo.searchSong({ title: "November Rain", artist: "Guns N Roses", album: "U
 
 ### Album search
 ```js
-let musicInfo = require("music-info");
+const musicInfo = require('music-info');
 
-musicInfo.searchAlbum({ name: "Appetite For Destruction", artist: "Guns N Roses" }, 1000).then(console.log);
+musicInfo.search('appetite for destruction', { type: 'album' }).then(console.log);
 ```
 * ``1000`` is the size of the artwork. Default value is 600.
 * ``artist`` parameter is optional.
@@ -54,13 +82,13 @@ musicInfo.searchAlbum({ name: "Appetite For Destruction", artist: "Guns N Roses"
   
 ```js
 {
-  name: String,
+  type: 'album',
+  title: String,
   artist: String,
   trackCount: Number,
-  explicit: Boolean,
-  contentAdvisoryRating: String,
-  releaseDate: String,
   genre: String,
+  releaseDate: Date,
+  explicit: Boolean,
   artwork: String
 }
 ```
@@ -70,9 +98,9 @@ musicInfo.searchAlbum({ name: "Appetite For Destruction", artist: "Guns N Roses"
 
 ### Lyrics search
 ```js
-let musicInfo = require("music-info");
+const musicInfo = require("music-info");
 
-musicInfo.searchLyrics({ title: "Since I Don't Have You", artist: "Guns N Roses" }).then(console.log);
+musicInfo.getLyrics("since i don't have you", { artist: 'Guns N Roses' }).then(console.log);
 ```
 * ``artist`` parameter is optional.
 
