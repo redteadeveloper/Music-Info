@@ -38,8 +38,8 @@ async function searchAlbum(term: string, { artist, artworkSize = 60 }: AlbumSear
   return searchResult.map((data: any): AlbumInfo => ({
     type: 'album',
     title: data.collectionName,
-    trackCount: data.trackCount,
     artist: data.artistName,
+    trackCount: data.trackCount,
     genre: data.primaryGenreName,
     releaseDate: new Date(data.releaseDate),
     explicit: !data.trackExplicitness.includes('not'),
