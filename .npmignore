@@ -1,7 +1,4 @@
-!index.js
-*.js
-
 .gitattributes
-
 .github/
 node_modules/
+src/
