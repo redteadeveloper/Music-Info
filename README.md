@@ -20,21 +20,24 @@ Usage: `searchSong(term, options)`
 
 **Tip**: To fetch an artwork URL or release date, use `searchAlbum` instead.
 
-<details><summary>Click to see the returned object (promise)</summary>
+<details><summary>Click to see the returned array (promise)</summary>
 <p>
 
 ```js
-{
-  type: 'song',
-  title: String, // title of the song
-  artist: String, // artist of the song
-  album: String, // title of the album
-  genre: String, // genre of the song
-  trackNumber: Number, // track number of the song
-  trackLength: Number, // length of the track in milliseconds
-  available: Boolean, // availability on iTunes
-  explicit: Boolean
-}
+[
+  {
+    type: 'song',
+    title: String, // title of the song
+    artist: String, // artist of the song
+    album: String, // title of the album
+    genre: String, // genre of the song
+    trackNumber: Number, // track number of the song
+    trackLength: Number, // length of the track in milliseconds
+    available: Boolean, // availability on iTunes
+    explicit: Boolean
+  },
+  // continues...
+]
 ```
 
 </p>
@@ -48,20 +51,23 @@ Usage: `searchAlbum(term, options)`
     - `artist<String>`: The artist name of the album you are searching for.
     - `artworkSize<Number>`: The artwork size you want to get. Default value is `60`.
 
-<details><summary>Click to see the returned object (promise)</summary>
+<details><summary>Click to see the returned array (promise)</summary>
 <p>
   
 ```js
-{
-  type: 'album',
-  title: String,
-  artist: String,
-  trackCount: Number,
-  genre: String,
-  releaseDate: Date,
-  explicit: Boolean,
-  artwork: String
-}
+[
+  {
+    type: 'album',
+    title: String,
+    artist: String,
+    trackCount: Number,
+    genre: String,
+    releaseDate: Date,
+    explicit: Boolean,
+    artwork: String
+  },
+  // continues...
+]
 ```
 
 </p>
@@ -70,3 +76,17 @@ Usage: `searchAlbum(term, options)`
 ### Searching for Lyrics
 
 To be added later.
+
+### Examples
+
+```js
+const musicInfo = require('music-info');
+
+musicInfo.searchSong('elegy dedicated with love', { artist: 'ophelia' }).then(data => {
+  console.log(data); // [ { type: 'song', title: 'Elegy Dedicated with Love', ... }, ... ]
+});
+
+musicInfo.searchAlbum('traveler', { artist: 'official hige dandism', artworkSize: 100 }).then(data => {
+  console.log(data); // [ { type: 'album', title: 'Traveler', artist: 'OFFICIAL HIGE DANDISM', ... }, ... ]
+});
+```
