@@ -47,5 +47,4 @@ async function searchAlbum(term: string, { artist, artworkSize = 60 }: AlbumSear
   }));
 }
 
-
 export { searchSong, searchAlbum };
